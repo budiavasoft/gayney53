@@ -1,0 +1,138 @@
+<?php
+defined( '_JEXEC' ) or die( 'Restricted access' );
+
+jimport('joomla.application.helper');
+require_once(JApplicationHelper::getPath('html'));
+JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.$option.DS.'tables');
+
+$us = JFactory::getUser();
+
+
+switch( $task ){
+  default:
+    if($us->usertype == "Super Administrator"){
+		showAdmin();
+	}
+	else{
+    	showBilling();
+	}
+    break;
+}
+
+function showAdmin()
+{
+  $db = JFactory::getDBO();
+  $tid = JRequest::getVar('tid','','get','string', JREQUEST_ALLOWRAW );
+  
+  $query = "SELECT * FROM #__users ORDER BY username ASC limit 2000";
+  $db->setQuery( $query );
+  $rows = $db->loadObjectList();
+	 
+  if ($db->getErrorNum())
+  {
+	echo $db->stderr();
+	return false;
+  }
+  
+  $month = JRequest::getVar('month', '','post','string', JREQUEST_ALLOWRAW );
+  $year = JRequest::getVar('year', '','post','string', JREQUEST_ALLOWRAW );
+  
+  if($month == "" || $year == ""){
+  	  $month = date("m");
+	  $year = date("Y");
+	  
+	  $query = "SELECT * FROM #__jcsv WHERE Unit = '$tid' and Activity = 'Satellite Activity' and month = '$month' and year = '$year' ORDER BY Description ASC";
+	  $db->setQuery( $query );
+	  $rows1 = $db->loadObjectList();
+	  
+	  $query = "SELECT * FROM #__jcsv WHERE Unit = '$tid' and Activity = 'Master Association Activity' and month = '$month' and year = '$year' ORDER BY Description ASC";
+	  $db->setQuery( $query );
+	  $rows2 = $db->loadObjectList();
+	  
+	  $query = "SELECT MAX(`update`) as `update` FROM #__jcsv_files WHERE SUBSTRING(`update`,4,2) = '$month' AND SUBSTRING(`update`,7,4) = '$year'";
+	  $db->setQuery( $query );
+	  $rows3 = $db->loadObjectList();
+	 
+	
+	  if ($db->getErrorNum())
+	  {
+		echo $db->stderr();
+		return false;
+	  }
+ }
+  else{
+  	 $query = "SELECT * FROM #__jcsv WHERE Unit = '$tid' and Activity = 'Satellite Activity' and month = '$month' and year = '$year' ORDER BY Description ASC";
+	  $db->setQuery( $query );
+	  $rows1 = $db->loadObjectList();
+	  
+	  $query = "SELECT * FROM #__jcsv WHERE Unit = '$tid' and Activity = 'Master Association Activity' and month = '$month' and year = '$year' ORDER BY Description ASC";
+	  $db->setQuery( $query );
+	  $rows2 = $db->loadObjectList();
+	  
+	  $query = "SELECT MAX(`update`) as `update` FROM #__jcsv_files WHERE SUBSTRING(`update`,4,2) = '$month' AND SUBSTRING(`update`,7,4) = '$year'";
+	  $db->setQuery( $query );
+	  $rows3 = $db->loadObjectList();
+	 
+	
+	  if ($db->getErrorNum())
+	  {
+		echo $db->stderr();
+		return false;
+	  }
+  }
+
+  HTML_jcsv::showAdmin($rows,$rows1,$rows2,$rows3,$tid);
+}
+
+function showBilling()
+{
+  $db = JFactory::getDBO();
+  $user = JFactory::getUser();
+  $month = JRequest::getVar('month', '','post','string', JREQUEST_ALLOWRAW );
+  $year = JRequest::getVar('year', '','post','string', JREQUEST_ALLOWRAW );
+  
+  if($month == "" || $year == ""){
+  	  $month = date("m");
+	  $year = date("Y");
+	  
+	  $query = "SELECT * FROM #__jcsv WHERE Unit = '$user->username' and Activity = 'Satellite Activity' and month = '$month' and year = '$year' ORDER BY Description ASC";
+	  $db->setQuery( $query );
+	  $rows1 = $db->loadObjectList();
+	  
+	  $query = "SELECT * FROM #__jcsv WHERE Unit = '$user->username' and Activity = 'Master Association Activity' and month = '$month' and year = '$year' ORDER BY Description ASC";
+	  $db->setQuery( $query );
+	  $rows2 = $db->loadObjectList();
+	  
+	  $query = "SELECT MAX(`update`) as `update` FROM #__jcsv_files WHERE SUBSTRING(`update`,4,2) = '$month' AND SUBSTRING(`update`,7,4) = '$year'";
+	  $db->setQuery( $query );
+	  $rows3 = $db->loadObjectList();
+	
+	  if ($db->getErrorNum())
+	  {
+		echo $db->stderr();
+		return false;
+	  }
+ }
+  else{
+  	 $query = "SELECT * FROM #__jcsv WHERE Unit = '$user->username' and Activity = 'Satellite Activity' and month = '$month' and year = '$year' ORDER BY Description ASC";
+	  $db->setQuery( $query );
+	  $rows1 = $db->loadObjectList();
+	  
+	  $query = "SELECT * FROM #__jcsv WHERE Unit = '$user->username' and Activity = 'Master Association Activity' and month = '$month' and year = '$year' ORDER BY Description ASC";
+	  $db->setQuery( $query );
+	  $rows2 = $db->loadObjectList();
+	 
+	  $query = "SELECT MAX(`update`) as `update` FROM #__jcsv_files WHERE SUBSTRING(`update`,4,2) = '$month' AND SUBSTRING(`update`,7,4) = '$year'";
+	  $db->setQuery( $query );
+	  $rows3 = $db->loadObjectList();
+	
+	  if ($db->getErrorNum())
+	  {
+		echo $db->stderr();
+		return false;
+	  }
+  }
+  
+	  HTML_jcsv::showBilling($rows1, $rows2, $rows3);
+}
+?>

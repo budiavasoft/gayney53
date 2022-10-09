@@ -1,0 +1,11 @@
+/*.table_about{
+    border:#999999 solid 1px;
+	border-collapse:collapse;
+	width:100%;
+}*/
+
+table.table_about td{
+    border:#CCCCCC solid 1px;
+	padding:3px 3px 3px 5px;
+	border-collapse:collapse;
+}

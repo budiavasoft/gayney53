@@ -1,0 +1,2 @@
+[03-Nov-2017 03:08:26 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 261591041 bytes) in /home/billingg/public_html/administrator/components/com_jcsv/admin.jcsv.php on line 240
+[03-Nov-2017 03:13:34 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 261918721 bytes) in /home/billingg/public_html/administrator/components/com_jcsv/admin.jcsv.php on line 240

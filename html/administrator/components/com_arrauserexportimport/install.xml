@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+	<name>ARRA User Export Import</name>
+	<!-- The following elements are optional and free of formatting conttraints -->
+	<creationDate>January 03, 2012</creationDate>
+	<author>joomlarra</author>
+	<authorEmail>joomlarra@gmail.com</authorEmail>
+	<authorUrl>http://www.joomlarra.com</authorUrl>
+	<copyright>@ 2010 - joomlarra.com</copyright>
+	<license>GPL v2 or later</license>
+	<!--  The version string is recorded in the components table -->
+	<version>1.0.12</version>
+	<!-- The description is optional and defaults to the name -->
+	<description></description>
+	<installfile>install.com_arrauser.php</installfile>
+	
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">uninstall.sql</file>
+		</sql>
+	</uninstall>	
+ 
+    <files folder="site">
+		<filename>LICENSE.txt</filename>
+    </files>
+  
+	<administration>
+	    <!-- Administrator language File Copy -->
+		<languages folder="admin">
+				<language tag="en-GB">en-GB.com_arrauserexportimport.ini</language>							
+		</languages>
+		<!-- Administration Menu Section -->
+		<menu link="option=com_arrauserexportimport"
+			img="components/com_arrauserexportimport/images/icons/menu_image.png">ARRA User Export Import</menu>
+		<files folder="admin">
+			<!-- Site Main File Copy Section -->
+			<filename>install.sql</filename>
+			<filename>uninstall.sql</filename>
+			<filename>arrauserexportimport.php</filename>
+			<filename>index.html</filename>
+			<filename>controller.php</filename>
+			<folder>files</folder>			
+			<folder>helpers</folder>			
+			<folder>controllers</folder>			
+			<folder>css</folder>						
+			<folder>images</folder>						
+			<folder>includes</folder>		
+			<folder>models</folder>
+			<folder>views</folder>
+		</files>				
+	</administration>
+</install>

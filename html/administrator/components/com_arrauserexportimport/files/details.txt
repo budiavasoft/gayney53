@@ -1,0 +1,39 @@
+For example, if you have following model for import:
+
+
+
+1     name,username,email,address,...,...,...
+2     name_a,username_a,email_a,address_a,...,...,...
+3     name_b,username_b,email_b,address_b,...,...,...
+4     name_c,username_c,email_c,address_c,...,...,...
+5     name_d,username_d,email_d,address_d,...,...,...
+6     name_e,username_e,email_e,address_e,...,...,...
+.....................................................
+100   name_x,username_x,email_x,address_x,...,...,...
+101   name_y,username_y,email_y,address_y,...,...,...
+102   name_z,username_z,email_z,address_z,...,...,...
+
+
+where 1,2,3,4,5,6->100,101 and 102 are number lines from import file and "..." means another columns for import.
+If you want to import users from second line(ie. name_a,username_a,email_a,address_a,...,...,...) to sixth line (ie. name_e,username_e,email_e,address_e,...,...,...)
+you must to complete 
+
+From = 1 and To = 5
+
+first line is not considered, so now first line is actually second line
+
+ie. first line is 2
+    second line is 3
+    third line is 4
+    fourth line is 5
+    fifth line is 6
+
+So min range and max range for import are
+
+line's number - 1
+
+
+To import all users in database, you must complete
+
+From = 1 (ie. name_a,username_a,email_a,address_a,...,...,...)  and 
+To = 101 (ie. name_z,username_z,email_z,address_z,...,...,...).

@@ -1,0 +1,65 @@
+.icon-32-import{ 
+   background-image: url(../images/icons/joomlarra_import.png); 
+}
+
+td.td_settings{
+   padding-left: 5px;
+}
+
+td.td_settings_options{
+   background-color:#F6F6F6;
+   border-bottom:1px solid #E9E9E9;
+   border-right:1px solid #E9E9E9;
+   color:#666666;
+   font-weight:bold;
+   text-align:left;
+   padding:5px 5px 5px 5px;
+}
+
+td.td_settings_2{
+   padding-left:5px;
+   color:#666666;
+   font-weight:bold;
+}
+
+div.space{
+    margin-bottom:5px;
+}
+
+div.truncate_message{
+   size:40px;
+   float:left;
+}
+
+legend.errors_legend{
+   color:#FF0000;
+   font-size:12px;
+   font-weight:bold;
+}
+
+.underline{
+	text-decoration:underline;
+}
+
+fieldset.adminform {
+	border:1px solid #CCCCCC;
+	margin:0px !important;
+}
+
+#file_content{
+	margin-top:14px;
+}
+
+.td_utf_notice{
+	background-color:#EFE7B8;
+  	border-bottom:1px solid #E9E9E9;
+   	border-right:1px solid #E9E9E9;
+   	color:#FF0000;
+   	font-weight:bold;   	
+   	padding:5px 5px 5px 5px;
+	margin-bottom:
+}
+
+.link_arra_video{
+	color:#FF0000 !important;
+}

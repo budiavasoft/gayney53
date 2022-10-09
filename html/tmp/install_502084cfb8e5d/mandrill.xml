@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system">
+	<name>plg_system_mandrill</name>
+	<author>Daniel Dimitrov</author>
+	<creationDate>2012-05-02</creationDate>
+	<copyright>Copyright (C) 2008 - 2012 Compojoom.com . All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>daniel@compojoom.com</authorEmail>
+	<authorUrl>https://compojoom.com</authorUrl>
+	<version>1.0.1</version>
+	<description>PLG_SYSTEM_MANDRILL_DESC</description>
+	<files>
+        <file>index.html</file>
+<folder>mailer</folder>
+<file plugin="mandrill">mandrill.php</file>
+	</files>
+	<languages folder="administrator/language">
+        <language tag="en-GB">en-GB/en-GB.plg_system_mandrill.sys.ini</language>
+	</languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="apiKey" type="text" default="" size="50" label="PLG_SYSTEM_MANDRILL_API_KEY" description="PLG_SYSTEM_MANDRILL_API_KEY_DESC"/>
+                <field name="secure" type="radio" default="0" label="PLG_SYSTEM_MANDRILL_HTTPS" description="PLG_SYSTEM_MANDRILL_USE_HTTPS_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+
+    <updateservers>
+        <server type="plugin" priority="2" name="Mandrill Update Servers">https://compojoom.com/index.php?option=com_ars&amp;view=update&amp;task=stream&amp;format=xml&amp;id=11</server>
+    </updateservers>
+
+</extension>
