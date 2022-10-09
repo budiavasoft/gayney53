@@ -17,7 +17,7 @@ services:
       - common_network
   mariadb:
     container_name: 'gainey-mariadb'
-    image: mariadb:10.4
+    image: mariadb:10
     ports:
       - '${FORWARD_DB_PORT:-3306}:3306'
     command: --default-authentication-plugin=mysql_native_password
