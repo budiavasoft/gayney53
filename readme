@@ -1,1 +1,4 @@
 docker exec -it --user www-data gainey-website bash
+
+/home/bst/avasoft/gayney53/html/libraries/phpmailer/phpmailer.php
+/home/bst/avasoft/gayney53/html/libraries/joomla/mail/mail.php
